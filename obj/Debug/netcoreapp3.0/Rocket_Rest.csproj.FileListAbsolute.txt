@@ -109,11 +109,9 @@ C:\Users\gabri\Desktop\Rest\Rocket_Rest\bin\Debug\netcoreapp3.0\BouncyCastle.Cry
 C:\Users\gabri\Desktop\Rest\Rocket_Rest\bin\Debug\netcoreapp3.0\Google.Protobuf.dll
 C:\Users\gabri\Desktop\Rest\Rocket_Rest\bin\Debug\netcoreapp3.0\MySql.Data.dll
 C:\Users\gabri\Desktop\Rest\Rocket_Rest\bin\Debug\netcoreapp3.0\MySql.Data.EntityFrameworkCore.dll
-C:\Users\gabri\Desktop\Rest\Rocket_Rest\bin\Debug\netcoreapp3.0\Remotion.Linq.dll
 C:\Users\gabri\Desktop\Rest\Rocket_Rest\bin\Debug\netcoreapp3.0\Renci.SshNet.dll
 C:\Users\gabri\Desktop\Rest\Rocket_Rest\bin\Debug\netcoreapp3.0\SshNet.Security.Cryptography.dll
 C:\Users\gabri\Desktop\Rest\Rocket_Rest\bin\Debug\netcoreapp3.0\System.Data.SqlClient.dll
-C:\Users\gabri\Desktop\Rest\Rocket_Rest\bin\Debug\netcoreapp3.0\System.Interactive.Async.dll
 C:\Users\gabri\Desktop\Rest\Rocket_Rest\bin\Debug\netcoreapp3.0\System.Resources.Extensions.dll
 C:\Users\gabri\Desktop\Rest\Rocket_Rest\bin\Debug\netcoreapp3.0\System.Xml.XPath.XmlDocument.dll
 C:\Users\gabri\Desktop\Rest\Rocket_Rest\bin\Debug\netcoreapp3.0\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
