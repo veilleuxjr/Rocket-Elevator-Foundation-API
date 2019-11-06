@@ -9,50 +9,50 @@ using Rocket_Rest.Models;
 
 namespace Rocket_Rest.Controllers
 {
-    [Route("api/batteries")]
+    [Route("api/elevators")]
     [ApiController]
-    public class BatteryController : ControllerBase
+    public class ElevatorsController : ControllerBase
     {
         private readonly Rocket_RestContext _context;
 
-        public BatteryController(Rocket_RestContext context)
+        public ElevatorsController(Rocket_RestContext context)
         {
             _context = context;
         }
 
-        // GET: api/Battery
+        // GET: api/Elevator
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Battery>>> GetBatteryItems()
+        public async Task<ActionResult<IEnumerable<Elevator>>> GetColumnItems()
         {
-            return await _context.batteries.ToListAsync();
+            return await _context.columns.ToListAsync();
         }
 
-        // GET: api/Battery/5
+        // GET: api/Elevator/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Battery>> GetBattery(long id)
+        public async Task<ActionResult<Elevator>> GetElevator(long id)
         {
-            var battery = await _context.batteries.FindAsync(id);
+            var elevator = await _context.elevators.FindAsync(id);
 
-            if (battery == null)
+            if (elevator == null)
             {
                 return NotFound();
             }
 
-            return battery;
+            return elevator;
         }
 
-        // PUT: api/Battery/5
+        // PUT: api/Elevator/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutBattery(long id, Battery battery)
+        public async Task<IActionResult> PutElevator(long id, Elevator elevator)
         {
-            if (id != battery.id)
+            if (id != elevator.id)
             {
                 return BadRequest();
             }
 
-            _context.Entry(battery).State = EntityState.Modified;
+            _context.Entry(elevator).State = EntityState.Modified;
 
             try
             {
@@ -60,7 +60,7 @@ namespace Rocket_Rest.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!BatteryExists(id))
+                if (!ElevatorExists(id))
                 {
                     return NotFound();
                 }
@@ -73,37 +73,37 @@ namespace Rocket_Rest.Controllers
             return NoContent();
         }
 
-        // POST: api/Battery
+        // POST: api/Elevator
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.
         [HttpPost]
-        public async Task<ActionResult<Battery>> PostBattery(Battery battery)
+        public async Task<ActionResult<Column>> PostElevator(Elevator elevator)
         {
-            _context.batteries.Add(battery);
+            _context.elevators.Add(elevator);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetBattery", new { id = battery.id }, battery);
+            return CreatedAtAction("GetElevator", new { id = elevator.id }, elevator);
         }
 
-        // DELETE: api/Battery/5
+        // DELETE: api/elevator/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<Battery>> DeleteBattery(long id)
+        public async Task<ActionResult<Column>> DeleteElevator(long id)
         {
-            var battery = await _context.batteries.FindAsync(id);
-            if (battery == null)
+            var elevator = await _context.elevators.FindAsync(id);
+            if (elevator == null)
             {
                 return NotFound();
             }
 
-            _context.batteries.Remove(battery);
+            _context.elevators.Remove(elevator);
             await _context.SaveChangesAsync();
 
-            return battery;
+            return elevator;
         }
 
-        private bool BatteryExists(long id)
+        private bool ElevatorExists(long id)
         {
-            return _context.batteries.Any(e => e.id == id);
+            return _context.elevators.Any(e => e.id == id);
         }
     }
 }
