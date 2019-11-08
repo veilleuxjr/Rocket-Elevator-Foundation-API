@@ -11,18 +11,107 @@ namespace Rocket_Rest.Controllers
 {
     [Route("api/buildings")]
     [ApiController]
-    public class BuildingsController : ControllerBase
+    public class BuildingController : ControllerBase
     {
         private readonly Rocket_RestContext _context;
 
-        public BuildingsController(Rocket_RestContext context)
+        public BuildingController(Rocket_RestContext context)
         {
             _context = context;
         }
 
+        // GET: api/buildings
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<Building>>> GetBuildingItems()
+        {
+            return await _context.buildings.ToListAsync();
+        }
+
+        // GET: api/buildings/5
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Building>> GetBuilding(long id)
+        {
+            var building = await _context.buildings.FindAsync(id);
+
+            if (building == null)
+            {
+                return NotFound();
+            }
+
+            return building;
+        }
+
+        // PUT: api/buildings/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
+        // more details see https://aka.ms/RazorPagesCRUD.
+        [HttpPut("{id}")]
+        public async Task<IActionResult> PutBuilding(long id, Building building)
+        {
+            if (id != building.id)
+            {
+                return BadRequest();
+            }
+
+            _context.Entry(building).State = EntityState.Modified;
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!BuildingExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return NoContent();
+        }
+
+        // POST: api/buildings
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
+        // more details see https://aka.ms/RazorPagesCRUD.
+        [HttpPost]
+        public async Task<ActionResult<Building>> PostBuilding(Building building)
+        {
+            _context.buildings.Add(building);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction("GetBuilding", new { id = building.id }, building);
+        }
+
+        // DELETE: api/buildings/5
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<Building>> DeleteBuilding(long id)
+        {
+            var building = await _context.buildings.FindAsync(id);
+            if (building == null)
+            {
+                return NotFound();
+            }
+
+            _context.buildings.Remove(building);
+            await _context.SaveChangesAsync();
+
+            return building;
+        }
+
+        private bool BuildingExists(long id)
+        {
+            return _context.buildings.Any(e => e.id == id);
+        }
+    
+
+
+
         
-        // GET: api/buildings -- will get buildings with a battery, column or elevator that is getting an intervention
-        
+        // GET: api/buildings/intervention -- will get buildings with a battery, column or elevator that is getting an intervention
+        [HttpGet("intervention")]
         public async Task<ActionResult<IEnumerable<Building>>> GetBuilding()
         {
         
