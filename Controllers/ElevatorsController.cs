@@ -22,9 +22,9 @@ namespace Rocket_Rest.Controllers
 
         // GET: api/Elevator
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Elevator>>> GetColumnItems()
+        public async Task<ActionResult<IEnumerable<Elevator>>> GetElevatorItems()
         {
-            return await _context.columns.ToListAsync();
+            return await _context.elevators.ToListAsync();
         }
 
         // GET: api/Elevator/5
@@ -40,6 +40,22 @@ namespace Rocket_Rest.Controllers
 
             return elevator;
         }
+        // GET: api/Elevator/5/status
+         [HttpGet("{id}/{status}")]
+        public async Task<ActionResult<Elevator>> GetElevator(long id, string status)
+        {
+            var elevator = await _context.elevators.FindAsync(id);
+
+            if (elevator == null)
+            {
+                return NotFound();
+            }
+
+            return elevator;
+        }
+
+        
+        
 
         // PUT: api/Elevator/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
@@ -77,7 +93,7 @@ namespace Rocket_Rest.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.
         [HttpPost]
-        public async Task<ActionResult<Column>> PostElevator(Elevator elevator)
+        public async Task<ActionResult<Elevator>> PostElevator(Elevator elevator)
         {
             _context.elevators.Add(elevator);
             await _context.SaveChangesAsync();
@@ -87,7 +103,7 @@ namespace Rocket_Rest.Controllers
 
         // DELETE: api/elevator/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<Column>> DeleteElevator(long id)
+        public async Task<ActionResult<Elevator>> DeleteElevator(long id)
         {
             var elevator = await _context.elevators.FindAsync(id);
             if (elevator == null)

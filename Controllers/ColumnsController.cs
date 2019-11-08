@@ -41,7 +41,7 @@ namespace Rocket_Rest.Controllers
             return column;
         }
 
-        // PUT: api/Battery/5
+        // PUT: api/Column/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.
         [HttpPut("{id}")]
