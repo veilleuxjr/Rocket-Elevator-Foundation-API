@@ -26,17 +26,18 @@ namespace Rocket_Rest.Controllers
         }
 
         [HttpGet("under30")]
-        // public IEnumerable<Lead> GetLead()
-        // {
-
-        // }
+        
          public IEnumerable<Lead> GetLead()
         {   
             
-            IQueryable<Lead> result = (from t in _context.leads
-                join r in _context.customers on t.id equals r.lead_id
+            IQueryable<Lead> result = from l in _context.leads  
+                join c in _context.customers on l.id equals c.lead_id into p
+                from c in p.DefaultIfEmpty()
 
-                where t.created_at >= DateTime.Now.AddDays(-30) && r == null select t);
+
+                where l.created_at >= DateTime.Now.AddDays(-30) 
+                where (c.lead_id == null)
+                select l;
 
             return result;
             
