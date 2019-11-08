@@ -10,5 +10,11 @@ namespace Rocket_Rest.Models
         }
 
         public DbSet<Battery> batteries { get; set; }
+        public DbSet<Column> columns { get; set; }
+        public DbSet<Elevator> elevators { get; set; }
+        public DbSet<Building> buildings { get; set; }
+        public DbSet<Address> addresses { get; set; }
+        public DbSet<Lead> leads { get; set; }
+        public DbSet<Customer> customers { get; set; }
     }
 }
