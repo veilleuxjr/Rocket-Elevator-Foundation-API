@@ -1,3 +1,5 @@
 {
-    "git.ignoreLimitWarning": true
+    "git.ignoreLimitWarning": true,
+    "appService.defaultWebAppToDeploy": "/subscriptions/c4be289d-1b19-4e60-8205-4e61a4d2d75d/resourceGroups/Rocket_Team/providers/Microsoft.Web/sites/RocketRest",
+    "appService.deploySubpath": "publish"
 }
