@@ -1,6 +1,6 @@
 # Rocket_Elevators_REST_API
 
-Rest_Api developped for Rocket Elevators by team Bibeau (Gabriel Bibeau, Miguel Martin, Jeremie Veuilleux and Steve Toutant)
+Rest_Api developped for Rocket Elevators by Jeremie Veuilleux.
 
 https://rocketrest.azurewebsites.net/
 
